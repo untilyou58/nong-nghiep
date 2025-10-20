@@ -16,6 +16,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import MegaMenuContent from "@/components/MegaMenuContent";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -58,27 +59,14 @@ const components: { title: string; href: string; description: string }[] = [
 export default function NavigationMenuDesktop() {
   return (
     <div className="hidden md:block">
-      <NavigationMenu
-        viewport={false}
-        className="[&_div.absolute]:left-auto [&_div.absolute]:right-0"
-      >
+      <NavigationMenu viewport={false}>
         <NavigationMenuList className="flex-wrap">
           <NavigationMenuItem>
             <NavigationMenuTrigger isShownChevron={false}>
               <MenuIcon className="w-6 h-6 text-gray-600" />
             </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-4 w-[300px] md:w-[400px] lg:w-[500px]">
-                {components.map((component) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  >
-                    {component.description}
-                  </ListItem>
-                ))}
-              </ul>
+            <NavigationMenuContent className="bg-white rounded-lg shadow-md p-4 md:p-6 w-[92vw] md:w-[1000px] max-w-[calc(100vw-40px)] mx-auto">
+              <MegaMenuContent />
             </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>

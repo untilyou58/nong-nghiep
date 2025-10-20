@@ -8,11 +8,9 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerClose,
 } from "@/components/ui/drawer";
 import NavigationMenuDesktop from "@/components/NavigationMenuDesktop";
+import MegaMenuContent from "@/components/MegaMenuContent";
 
 export default function Home() {
   const categories = [
@@ -77,22 +75,7 @@ export default function Home() {
                     <DrawerTitle>Danh mục</DrawerTitle>
                   </DrawerHeader>
                   <div className="mt-2">
-                    <div className="bg-white rounded-lg shadow-sm p-4">
-                      {categories.map((category, index) => (
-                        <div
-                          key={index}
-                          className={`py-2 text-sm ${
-                            index === 0 ? "font-bold border-b mb-2" : ""
-                          } ${
-                            index === 6 || index === 10
-                              ? "border-t mt-2 pt-2"
-                              : ""
-                          }`}
-                        >
-                          {category}
-                        </div>
-                      ))}
-                    </div>
+                    <MegaMenuContent />
                   </div>
                 </DrawerContent>
               </Drawer>
