@@ -19,8 +19,50 @@ export default function ProductCard({
   rating = 0,
   badge,
 }: ProductCardProps) {
+  // Normalize and format price to VND for display.
+  // Assumption: input prices from the page may be in JPY (e.g. "¥2,980").
+  // We'll detect a yen symbol and convert using a conservative static rate (1 JPY = 170 VND).
+  // This avoids external network calls for exchange rates; adjust rate as needed.
+  const parseNumber = (s?: string | number) => {
+    if (s == null) return NaN;
+    return Number(String(s).replace(/[^0-9.-]+/g, ""));
+  };
+
+  const formatVND = (n: number) => {
+    try {
+      return new Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+        maximumFractionDigits: 0,
+      }).format(n);
+    } catch {
+      return String(n);
+    }
+  };
+
+  const RATE_JPY_TO_VND = 170; // static assumption; change if you have real rates
+  let formattedPrice = String(price);
+  const rawNumeric = parseNumber(price);
+  if (
+    String(price).includes("¥") ||
+    String(price).toUpperCase().includes("JPY")
+  ) {
+    if (!Number.isNaN(rawNumeric) && isFinite(rawNumeric)) {
+      formattedPrice = formatVND(Math.round(rawNumeric * RATE_JPY_TO_VND));
+    }
+  } else if (!Number.isNaN(rawNumeric) && isFinite(rawNumeric)) {
+    // If price looks numeric but not marked as JPY, assume it's already in the smallest unit (e.g., VND) or a raw number
+    // If it's a relatively small number (e.g. < 10000), it's likely in another currency; we still format as VND.
+    formattedPrice = formatVND(Math.round(rawNumeric));
+  }
+
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <div
+      data-title={title}
+      data-seller={seller}
+      data-price={formattedPrice}
+      className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+    >
       <div className="relative h-48 w-full">
         <Image
           src={image}
@@ -66,7 +108,9 @@ export default function ProductCard({
         )}
         <div className="flex items-center justify-between">
           <span className="text-sm text-gray-500">Bao gồm thuế</span>
-          <span className="text-lg font-bold text-red-600">{price}</span>
+          <span className="text-lg font-bold text-red-600">
+            {formattedPrice}
+          </span>
         </div>
       </div>
     </div>

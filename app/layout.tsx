@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* Top-level wrapper ensures full-width body on small screens; inner pages can center at md+ */}
+        <div className="w-full bg-gray-50">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
