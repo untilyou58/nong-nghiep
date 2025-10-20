@@ -1,103 +1,350 @@
 import Image from "next/image";
+import ProductCard from "@/components/ProductCard";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Search,
+  ShoppingCart,
+  Menu,
+} from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const categories = [
+    "Tìm trên Tabechoku",
+    "Xem tất cả sản phẩm",
+    "Xem tất cả sản phẩm",
+    "Xem tất cả sản phẩm",
+    "Xem sản phẩm đề xuất",
+    "Đăng ký định kỳ / Gói",
+    "Đánh giá của mọi người",
+    "Câu hỏi thường gặp",
+    "Cách sử dụng Tabechoku",
+    "Về Tabechoku",
+    "Rau củ",
+    "Trái cây",
+    "Gạo & Ngũ cốc",
+    "Thịt",
+    "Hải sản",
+    "Trứng & Sản phẩm từ sữa",
+    "Mật ong",
+    "Trà",
+    "Gia vị",
+    "Sản phẩm chế biến",
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Image
+                src="https://csspicker.dev/api/image/?q=fresh+food+logo&image_type=illustration"
+                alt="Tabechoku"
+                width={180}
+                height={32}
+                className="h-8"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVQYV2NkYGD4z0AEYBxVSFMAAABkAAH6D3b3AAAAAElFTkSuQmCC"
+              />
+              <div className="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 w-96">
+                <Search className="w-4 h-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Tìm nhà sản xuất hoặc sản phẩm"
+                  className="bg-transparent outline-none text-sm flex-1"
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <ShoppingCart className="w-6 h-6 text-gray-600" />
+              <Menu className="w-6 h-6 text-gray-600" />
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </header>
+
+      <div className="max-w-7xl mx-auto px-4 py-6 flex gap-6">
+        {/* Sidebar */}
+        <aside className="w-64 shrink-0">
+          <div className="bg-white rounded-lg shadow-sm p-4">
+            {categories.map((category, index) => (
+              <div
+                key={index}
+                className={`py-2 text-sm ${
+                  index === 0 ? "font-bold border-b mb-2" : ""
+                } ${index === 6 || index === 10 ? "border-t mt-2 pt-2" : ""}`}
+              >
+                {category}
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1">
+          {/* Hero Banner */}
+          <div className="relative bg-linear-to-r from-green-50 to-orange-50 rounded-lg overflow-hidden mb-6 h-64">
+            <div className="absolute inset-0 flex items-center justify-between px-8">
+              <div className="flex-1 relative h-64">
+                <Image
+                  src="https://csspicker.dev/api/image/?q=happy+farmers+field&image_type=photo"
+                  alt="Người nông dân"
+                  className="object-cover rounded-l-lg"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVQYV2NkYGD4z0AEYBxVSFMAAABkAAH6D3b3AAAAAElFTkSuQmCC"
+                />
+              </div>
+              <div className="flex-1 text-center px-8">
+                <h2 className="text-2xl font-bold mb-2">
+                  Giao trực tiếp từ người sản xuất.
+                </h2>
+                <p className="text-lg mb-4">
+                  Vì vậy tươi ngon. Vì vậy thơm ngon.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Sàn thương mại trực tiếp lớn nhất Nhật Bản
+                </p>
+              </div>
+              <div className="flex-1 relative h-64">
+                <Image
+                  src="https://csspicker.dev/api/image/?q=fresh+vegetables+basket&image_type=photo"
+                  alt="Rổ rau tươi"
+                  className="object-cover rounded-r-lg"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVQYV2NkYGD4z0AEYBxVSFMAAABkAAH6D3b3AAAAAElFTkSuQmCC"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Promotional Banners */}
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            <div className="relative h-32 rounded-lg overflow-hidden">
+              <Image
+                src="https://csspicker.dev/api/image/?q=food+delivery+banner&image_type=illustration"
+                alt="Banner giao hàng"
+                className="object-cover"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 33vw"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVQYV2NkYGD4z0AEYBxVSFMAAABkAAH6D3b3AAAAAElFTkSuQmCC"
+              />
+            </div>
+            <div className="relative h-32 rounded-lg overflow-hidden">
+              <Image
+                src="https://csspicker.dev/api/image/?q=free+shipping+banner&image_type=illustration"
+                alt="Banner miễn phí vận chuyển"
+                className="object-cover"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 33vw"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVQYV2NkYGD4z0AEYBxVSFMAAABkAAH6D3b3AAAAAElFTkSuQmCC"
+              />
+            </div>
+            <div className="relative h-32 rounded-lg overflow-hidden">
+              <Image
+                src="https://csspicker.dev/api/image/?q=seasonal+food+banner&image_type=illustration"
+                alt="Banner theo mùa"
+                className="object-cover"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 33vw"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVQYV2NkYGD4z0AEYBxVSFMAAABkAAH6D3b3AAAAAElFTkSuQmCC"
+              />
+            </div>
+          </div>
+
+          {/* みんなが愛用した商品 Section */}
+          <section className="mb-12">
+            <div className="text-center mb-6">
+              <div className="relative w-12 h-12 mx-auto mb-2">
+                <Image
+                  src="https://csspicker.dev/api/image/?q=crown+icon&image_type=illustration"
+                  alt="Vương miện"
+                  className="object-contain"
+                  fill
+                  sizes="48px"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVQYV2NkYGD4z0AEYBxVSFMAAABkAAH6D3b3AAAAAElFTkSuQmCC"
+                />
+              </div>
+              <h2 className="text-2xl font-bold">Sản phẩm được ưa chuộng</h2>
+            </div>
+            <div className="relative">
+              <button className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg z-10">
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <div className="grid grid-cols-3 gap-4">
+                <ProductCard
+                  image="https://csspicker.dev/api/image/?q=sweet+corn+fresh&image_type=photo"
+                  title="Ngô ngọt vừa hái - KanKan"
+                  price="¥2,980"
+                  seller="Nông trại Sato"
+                  rating={5}
+                />
+                <ProductCard
+                  image="https://csspicker.dev/api/image/?q=edamame+green+beans&image_type=photo"
+                  title="Đậu ván xanh - Edamame Chado"
+                  price="¥1,980"
+                  seller="Nông trại Yamamoto"
+                  rating={5}
+                />
+                <ProductCard
+                  image="https://csspicker.dev/api/image/?q=artisan+bread+loaf&image_type=photo"
+                  title="Bánh mì men tự nhiên - Set mix"
+                  price="¥3,240"
+                  seller="Baker Farm"
+                  rating={5}
+                />
+              </div>
+              <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg z-10">
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="flex justify-center gap-2 mt-4">
+              {[...Array(8)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-2 h-2 rounded-full ${
+                    i === 0 ? "bg-gray-800" : "bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* 販売量上位商品 Section */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-center mb-6">
+              Sản phẩm bán chạy
+            </h2>
+            <div className="grid grid-cols-4 gap-4">
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=japanese+melon&image_type=photo"
+                title="Dưa lưới thượng hạng - 1 trái"
+                price="¥3,980"
+                seller="Vườn Dưa"
+                rating={5}
+                badge="Miễn phí vận chuyển"
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=red+tomato+fresh&image_type=photo"
+                title="Cà chua chín mọng 1kg"
+                price="¥1,680"
+                seller="Trang trại Tomato"
+                rating={5}
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=mandarin+orange&image_type=photo"
+                title="Quýt hộ gia đình 5kg (hàng loại 2)"
+                price="¥2,480"
+                seller="Vườn Quýt"
+                rating={4}
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=persimmon+fruit&image_type=photo"
+                title="Hộp 12 quả hồng Fuji (quà tặng)"
+                price="¥4,320"
+                seller="Vườn Hồng"
+                rating={5}
+              />
+            </div>
+          </section>
+
+          {/* 旬のおすすめ Section */}
+          <section className="mb-12">
+            <div className="text-center mb-6">
+              <div className="relative w-12 h-12 mx-auto mb-2">
+                <Image
+                  src="https://csspicker.dev/api/image/?q=leaf+icon&image_type=illustration"
+                  alt="Lá"
+                  className="object-contain"
+                  fill
+                  sizes="48px"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFklEQVQYV2NkYGD4z0AEYBxVSFMAAABkAAH6D3b3AAAAAElFTkSuQmCC"
+                />
+              </div>
+              <h2 className="text-2xl font-bold">Gợi ý theo mùa</h2>
+            </div>
+            <div className="grid grid-cols-4 gap-4">
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=mandarin+oranges+box&image_type=photo"
+                title="Quýt Wenshu 5kg - Dùng gia đình"
+                price="¥2,160"
+                seller="Vườn Quýt"
+                rating={5}
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=yuzu+citrus+fruit&image_type=photo"
+                title="Chanh Yuzu hữu cơ 1kg"
+                price="¥1,980"
+                seller="Vườn Yuzu"
+                rating={5}
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=pomelo+grapefruit&image_type=photo"
+                title="Bưởi Buntan - hộp 3 quả"
+                price="¥2,680"
+                seller="Trang trại Cam"
+                rating={4}
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=japanese+pear&image_type=photo"
+                title="Lê Nhật - loại Housui 5kg"
+                price="¥3,980"
+                seller="Vườn Lê"
+                rating={5}
+                badge="Hạn chế thời gian"
+              />
+            </div>
+          </section>
+
+          {/* 今が旬の商品 Section */}
+          <section>
+            <h2 className="text-2xl font-bold text-center mb-6">
+              Sản phẩm đang vào mùa
+            </h2>
+            <div className="grid grid-cols-4 gap-4">
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=white+rice+bag&image_type=photo"
+                title="Gạo mới Koshihikari 5kg (niên vụ Reiwa 5)"
+                price="¥3,240"
+                seller="Nông trại Gạo"
+                rating={5}
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=blood+orange+fruit&image_type=photo"
+                title="Cam máu 2kg (hàng loại 2)"
+                price="¥1,980"
+                seller="Vườn Cam"
+                rating={4}
+                badge="Miễn phí giao hàng"
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=orange+citrus+fresh&image_type=photo"
+                title="Cam Kiyomi - 3kg (quà tặng)"
+                price="¥3,680"
+                seller="Vườn Cam"
+                rating={5}
+              />
+              <ProductCard
+                image="https://csspicker.dev/api/image/?q=japanese+sake+bottle&image_type=photo"
+                title="Rượu Junmai Daiginjo 720ml"
+                price="¥2,980"
+                seller="Nhà máy rượu"
+                rating={5}
+              />
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
