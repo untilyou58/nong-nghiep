@@ -7,9 +7,11 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
+  DrawerClose,
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 
 export default function CartDrawer() {
@@ -96,11 +98,24 @@ export default function CartDrawer() {
             </ul>
           )}
           {cart.length > 0 && (
-            <div className="mt-4 flex justify-between items-center">
-              <div className="font-bold">Tổng: ¥{total.toLocaleString()}</div>
-              <Button variant="destructive" onClick={clearCart}>
-                Xóa tất cả
-              </Button>
+            <div className="mt-4">
+              <div className="flex justify-between items-center mb-3">
+                <div className="font-bold">Tổng: ¥{total.toLocaleString()}</div>
+              </div>
+              <div className="flex gap-2">
+                <DrawerClose asChild>
+                  <Button asChild className="flex-1">
+                    <Link href="/checkout">Thanh toán</Link>
+                  </Button>
+                </DrawerClose>
+                <Button
+                  variant="destructive"
+                  onClick={clearCart}
+                  className="cursor-pointer"
+                >
+                  Xóa tất cả
+                </Button>
+              </div>
             </div>
           )}
         </div>

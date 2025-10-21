@@ -63,7 +63,7 @@ export default function ProductCard({
       data-title={title}
       data-seller={seller}
       data-price={formattedPrice}
-      className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+      className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col"
     >
       <div className="relative h-48 w-full">
         <Image
