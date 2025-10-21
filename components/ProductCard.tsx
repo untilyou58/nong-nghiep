@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { Star } from "lucide-react";
@@ -88,7 +90,7 @@ export default function ProductCard({
           <Image
             src="https://csspicker.dev/api/image/?q=farmer+avatar&image_type=photo"
             alt={`Ảnh của ${seller}`}
-            className="rounded-full"
+            className="rounded-full w-6 h-6 object-cover"
             width={24}
             height={24}
           />
@@ -106,7 +108,7 @@ export default function ProductCard({
             ))}
           </div>
         )}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-2">
           <span className="text-sm text-gray-500">Bao gồm thuế</span>
           <span className="text-lg font-bold text-red-600">
             {formattedPrice}
