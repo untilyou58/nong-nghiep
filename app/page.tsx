@@ -79,7 +79,7 @@ export default function Home() {
           <PopularCarousel>
             <div className="relative h-32 rounded-lg overflow-hidden">
               <Image
-                src="https://csspicker.dev/api/image/?q=food+delivery+banner&image_type=illustration"
+                src="/products/farm.png"
                 alt="Banner giao hàng"
                 className="object-cover"
                 fill
