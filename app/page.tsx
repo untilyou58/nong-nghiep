@@ -90,7 +90,7 @@ export default function Home() {
             </div>
             <div className="relative h-32 rounded-lg overflow-hidden">
               <Image
-                src="https://csspicker.dev/api/image/?q=free+shipping+banner&image_type=illustration"
+                src="/products/freeship.png"
                 alt="Banner miễn phí vận chuyển"
                 className="object-cover"
                 fill
